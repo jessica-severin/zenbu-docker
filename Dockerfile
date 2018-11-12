@@ -16,7 +16,7 @@ MAINTAINER Roberto Vera Alvarez <r78v10a07@gmail.com>
 
 ENV CMAKE_URL=https://cmake.org/files/v3.13/
 ENV CMAKE_INSTALLER=cmake-3.13.0-rc3-Linux-x86_64.sh
-ZENBU_URL=https://github.com/jessica-severin/ZENBU_2.11.git
+ENV ZENBU_URL=https://github.com/jessica-severin/ZENBU_2.11
 ENV ZENBU_FOLDER=ZENBU_2.11
 ENV BAMTOOLS_URL=https://github.com/pezmaster31/bamtools
 ENV FOLDER=ZENBU
