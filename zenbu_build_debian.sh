@@ -21,15 +21,15 @@ chgrp -R www-data /var/lib/zenbu/
 export ZENBU_SRC_DIR=`pwd`
 echo $ZENBU_SRC_DIR
 
-mkdir -p /usr/share/zenbu/src/$ZENBU_FOLDER/sql
+ZENBU_FOLDER="ZENBU_2.11"
+mkdir -p /usr/share/zenbu/src/$ZENBU_FOLDER
+ln -s /usr/share/zenbu/src/$ZENBU_FOLDER /usr/share/zenbu/src/ZENBU
 
 #zenbu source code - when using script packaged with the source code
 #copy the perl lib objects to /usr/share/zenbu/src/ZENBU/lib
-mkdir /usr/share/zenbu/src/ZENBU
-cp -r $ZENBU_SRC_DIR/lib /usr/share/zenbu/src/ZENBU/
+cp -r $ZENBU_SRC_DIR/lib /usr/share/zenbu/src/$ZENBU_FOLDER
 cp -r $ZENBU_SRC_DIR/build_support /usr/share/zenbu/src/$ZENBU_FOLDER/
 cp -r $ZENBU_SRC_DIR/sql /usr/share/zenbu/src/$ZENBU_FOLDER/
-
 cd $ZENBU_SRC_DIR/c++
 make
 
@@ -39,11 +39,11 @@ make
 make install
 
 #make zenbu website
-cp -rp $ZENBU_SRC_DIR/www/zenbu /usr/share/zenbu/www/zenbu_2.11.1
-ln -s /usr/share/zenbu/www/zenbu_2.11.1  /var/www/zenbu
+cp -rp $ZENBU_SRC_DIR/www/zenbu /usr/share/zenbu/www/$ZENBU_FOLDER
+ln -s /usr/share/zenbu/www/$ZENBU_FOLDER  /var/www/zenbu
 cd $ZENBU_SRC_DIR/c++/cgi
 make
-cp -f *cgi /usr/share/zenbu/www/zenbu_2.11.1/cgi/
+cp -f *cgi /usr/share/zenbu/www/$ZENBU_FOLDER/cgi/
 
 #configure zenbu server
 export ZUUID=`uuidgen`
