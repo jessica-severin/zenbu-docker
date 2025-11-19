@@ -1,7 +1,8 @@
 #!/bin/bash
 
-chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && service mysql restart
-service apache2 restart
+#chown -R mysql:mysql /var/lib/mysql /var/run/mysqld 
+service mariadb restart
 /sbin/init_db.sh
-zenbu_agent_launcher.sh
+service apache2 restart
+#zenbu_agent_launcher.sh
 
