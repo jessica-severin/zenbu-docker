@@ -6,4 +6,6 @@ To build the docker image run:
 
 To execute the docker container run:
 
-`docker run -p 8082:80 debian-zenbu:3.1`
+`docker run -it -p 8082:80 debian-zenbu:3.1`  for interactive
+
+`docker run -d -it -p 8082:80 debian-zenbu:3.1`   for detached in background
