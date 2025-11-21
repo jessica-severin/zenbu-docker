@@ -34,7 +34,7 @@ RUN apt-get -y upgrade
 RUN apt-get -y install apache2 libapache2-mod-fcgid mariadb-server mariadb-client \
                        default-mysql-client default-libmysqlclient-dev \
                        sqlite3 samtools git wget cvs make bzip2 gcc g++ \
-                       cmake vim expat net-tools inetutils-ping \
+                       cmake vim expat net-tools inetutils-ping nfs-common rpcbind \
                        libboost-dev libcurl4-gnutls-dev libfcgi-dev \
                        libncurses-dev zlib1g-dev libmysql++-dev libsqlite3-dev \
                        libexpat1-dev openssl uuid-runtime libssl-dev \
