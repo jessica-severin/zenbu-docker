@@ -10,6 +10,9 @@
 
 `docker run -d -it -p 8082:80 debian-zenbu:3.1`   for detached in background
 
+access your docker zenbu at http://localhost:8082/zenbu 
+
+
 ## NFS mounting external zenbu data directories
 
 ### Setup external NFS server
