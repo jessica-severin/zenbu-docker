@@ -49,3 +49,19 @@ There are better guides on the internet for setting up and configuring an NFS se
    docker run -it -v zenbu_vacdb:/data/zenbu -p 8082:80 debian-zenbu:3.1
 
 ```
+
+### For vacdb AWS simulation
+using my desktop workstation to host a maridb database and function as NFS server with the vacdb data
+
+
+customized the zenbu.conf and Dockerfile for the vacdb setup
+
+
+```
+   docker build -t debian-zenbu:3.1 .
+
+   docker volume create --driver local --opt type=nfs --opt o=addr=10.64.132.247,rw --opt device=:/data2/zenbu_vacdb  zenbu_vacdb
+
+   docker run -it -v zenbu_vacdb:/data/zenbu -p 8082:80 debian-zenbu:3.1
+
+```

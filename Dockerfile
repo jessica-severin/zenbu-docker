@@ -94,6 +94,11 @@ COPY zenbu.conf /tmp/zenbu.conf
 RUN export ZUUID=`uuidgen` && \
   sed 's/uuid_replace_me/'$ZUUID'/g' /tmp/zenbu.conf > /etc/zenbu/zenbu.conf
 
+#vacdb user originally setup with zenbu at /usr/local/zenbu. need symbolic link
+RUN ln -s /data/zenbu /usr/local/zenbu
+#replace the default generated /var/www/html with the external one in /data/zenbu/html
+RUN mv /var/www/html /var/www/html_orig; ln -s /data/zenbu/html /var/www/html
+
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
