@@ -1,7 +1,8 @@
 #!/bin/bash
 
-chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && service mysql restart
+service mariadb restart
 service apache2 restart
-/sbin/init_db.sh
-zenbu_agent_launcher.sh
+#zenbu_agent_launcher.sh
 
+echo "Entrypoint ended";
+/bin/bash "$@"
