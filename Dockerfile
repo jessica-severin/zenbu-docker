@@ -19,6 +19,8 @@ ENV CMAKE_INSTALLER=cmake-3.13.0-rc3-Linux-x86_64.sh
 ENV ZENBU_URL=https://github.com/jessica-severin/ZENBU
 ENV ZENBU_FOLDER=ZENBU
 ENV ZENBU_SRC=/usr/share/zenbu/src
+#ENV ZENBU_DATA=/var/lib/zenbu
+ENV ZENBU_DATA=/data/zenbu
 ENV BAMTOOLS_URL=https://github.com/pezmaster31/bamtools
 ENV BAMTOOLS_FOLDER=bamtools
 ENV DST=/tmp
@@ -63,10 +65,11 @@ RUN a2enmod rewrite && \
 
 # make zenbu directory structure
 # the owner must be the apache process owner, on some systems is it httpd, or apache or www-data
-RUN mkdir -p /etc/zenbu /usr/share/zenbu /var/lib/zenbu /usr/share/zenbu/src /usr/share/zenbu/www /var/lib/zenbu/dbs /var/lib/zenbu/cache /var/lib/zenbu/users
-RUN chown www-data /var/lib/zenbu/cache
-RUN chown www-data /var/lib/zenbu/users
-RUN chgrp -R www-data /var/lib/zenbu/
+RUN mkdir -p /etc/zenbu /usr/share/zenbu /usr/share/zenbu/src /usr/share/zenbu/www 
+RUN mkdir -p $ZENBU_DATA $ZENBU_DATA/dbs $ZENBU_DATA/cache $ZENBU_DATA/users $ZENBU_DATA/www
+RUN chown www-data $ZENBU_DATA/cache
+RUN chown www-data $ZENBU_DATA/users
+RUN chgrp -R www-data $ZENBU_DATA/
 
 #clone ZENBU source from github -dev branch and build
 RUN cd $ZENBU_SRC && \
