@@ -90,9 +90,10 @@ RUN cp -rp $ZENBU_SRC_DIR/www/zenbu /usr/share/zenbu/www/$ZENBU_FOLDER && \
   cp -f *cgi /usr/share/zenbu/www/$ZENBU_FOLDER/cgi/
 
 #configure zenbu server
-COPY zenbu.conf /tmp/zenbu.conf
-RUN export ZUUID=`uuidgen` && \
-  sed 's/uuid_replace_me/'$ZUUID'/g' /tmp/zenbu.conf > /etc/zenbu/zenbu.conf
+#COPY zenbu.conf /tmp/zenbu.conf
+#RUN export ZUUID=`uuidgen` && \
+#  sed 's/uuid_replace_me/'$ZUUID'/g' /tmp/zenbu.conf > /etc/zenbu/zenbu.conf
+RUN ln -s /data/zenbu/etc/zenbu.conf /etc/zenbu/zenbu.conf
 
 #vacdb user originally setup with zenbu at /usr/local/zenbu. need symbolic link
 RUN ln -s /data/zenbu /usr/local/zenbu
