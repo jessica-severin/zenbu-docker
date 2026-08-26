@@ -77,6 +77,8 @@ RUN cd $ZENBU_SRC && \
     cd $ZENBU_FOLDER 
 ENV ZENBU_SRC_DIR=$ZENBU_SRC/$ZENBU_FOLDER
 
+RUN cd $ZENBU_SRC_DIR/c++; make libBigWigInstall; ldconfig
+
 RUN cd $ZENBU_SRC_DIR/c++; make
 
 #install the commandline tools
